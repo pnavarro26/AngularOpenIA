@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
   selector: 'app-gpt-message',
-  imports: [],
+  imports: [MarkdownModule],
   templateUrl: './gpt-message.html',
   styles: ``,
 })

@@ -19,7 +19,6 @@ export interface TextMessageBoxFileForm {
 })
 export class TextMessageBoxFile {
   @Input() placeholder: string = '';
-  @Input() disableCorrections: boolean = false;
 
   @Output() onMessage: EventEmitter<TextMessageBoxFileForm> =
     new EventEmitter();

@@ -2,7 +2,9 @@
   <div class="chat-messages">
     <div class="grid gap-y-2">
       <!-- Chat Messages -->
-      <app-gpt-message [text]="'¿Qué deseas comparar?'"></app-gpt-message>
+      <app-gpt-message
+        [text]="'Escribe lo que necesitas revisar'"
+      ></app-gpt-message>
 
       @for(message of messages(); track $index) {
       <!-- Chat Messages -->

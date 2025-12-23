@@ -23,7 +23,6 @@ export class TextMessageBox {
     if (this.form.invalid) return;
 
     const { promt } = this.form.value;
-    console.log({ promt });
 
     // Emit the message
     this.onMessage.emit(promt ?? '');

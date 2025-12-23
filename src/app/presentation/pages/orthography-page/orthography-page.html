@@ -5,20 +5,28 @@
       <app-gpt-message
         [text]="'Escribe lo que necesitas revisar'"
       ></app-gpt-message>
+
+      @for(message of messages(); track $index) {
+      <!-- Chat Messages -->
+      @if(message.isGpt ){
+      <app-gpt-message-orthography
+        [correctedText]="message.text"
+        [errors]="message.info!.errors"
+        [message]="message.info?.message"
+      />
+      } @else {
+      <app-my-message [text]="message.text" />
+      } }
+
+      <!-- Esta cargando -->
+      @if(isLoading()){
+      <app-typing-loader />
+      }
     </div>
-
-    <app-my-message [text]="'Escribe lo que necesitas revisar'" />
-
-    <app-typing-loader />
   </div>
 
   <!-- MessageBox -->
-  <!-- <app-text-message-box
-    placeholder="Escribe"
-    (onMessage)="handleMessage($event)"
-  /> -->
-
-  <app-text-message-box-file
+  <app-text-message-box
     placeholder="Escribe"
     (onMessage)="handleMessage($event)"
   />
