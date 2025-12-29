@@ -5,6 +5,7 @@ import {
   prosConsStreamUseCase,
   prosConsUseCase,
 } from 'app/core/use-case';
+import { TranslateTextUseCase } from 'app/core/use-case/translate/translate-text-use-case';
 
 @Injectable({
   providedIn: 'root',
@@ -12,19 +13,24 @@ import {
 export class OpenAI {
   // Metodo para interactuar con el servicio de Gemini de Google
   // y realizar la corrección ortográfica
-  checkOrthography(promt: string) {
-    return from(orthographyUseCase(promt));
+  checkOrthography(prompt: string) {
+    return from(orthographyUseCase(prompt));
   }
 
   // Metodo para interactuar con el servicio de Gemini de Google
   // y realizar la comparación de pros y contras
-  prosCons(promt: string) {
-    return from(prosConsUseCase(promt));
+  prosCons(prompt: string) {
+    return from(prosConsUseCase(prompt));
   }
 
   // Metodo para interactuar con el servicio de Gemini de Google
   // y realizar la comparación de pros y contras
-  prosConsStream(promt: string, abortSignal?: AbortSignal) {
-    return prosConsStreamUseCase(promt, abortSignal);
+  prosConsStream(prompt: string, abortSignal?: AbortSignal) {
+    return prosConsStreamUseCase(prompt, abortSignal);
+  }
+
+  // Metodo para traducir texto a otro idioma //
+  translate(prompt: string, lang: string) {
+    return from(TranslateTextUseCase(prompt, lang));
   }
 }

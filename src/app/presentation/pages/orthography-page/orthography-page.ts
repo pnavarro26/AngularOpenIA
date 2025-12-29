@@ -27,15 +27,15 @@ export default class OrthographyPage {
 
   public openAiService = inject(OpenAI);
 
-  handleMessage(promt: string) {
+  handleMessage(prompt: string) {
     this.isLoading.set(true);
 
     this.messages.update((prevmessages) => [
       ...prevmessages,
-      { isGpt: false, text: promt },
+      { isGpt: false, text: prompt },
     ]);
 
-    this.openAiService.checkOrthography(promt).subscribe((response) => {
+    this.openAiService.checkOrthography(prompt).subscribe((response) => {
       // ocultar loader
       this.isLoading.set(false);
       console.log({ response });
@@ -69,11 +69,11 @@ export default class OrthographyPage {
     });
   }
 
-  /*handleMessageWithFile(promt: TextMessageBoxFileForm) {
-    console.log({ promt });
+  /*handleMessageWithFile(prompt: TextMessageBoxFileForm) {
+    console.log({ prompt });
   }
 
-  handleMessageSelect(promt: any) {
-    console.log({ promt });
+  handleMessageSelect(prompt: any) {
+    console.log({ prompt });
   }*/
 }

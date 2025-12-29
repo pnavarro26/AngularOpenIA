@@ -7,7 +7,7 @@ interface Opion {
 }
 
 export interface TextMessageBoxEvent {
-  promt: string;
+  prompt: string;
   selectedOption: string;
 }
 
@@ -26,17 +26,17 @@ export class TextMessageBoxSelect {
   public fb = inject(FormBuilder);
 
   public form = this.fb.group({
-    promt: ['', Validators.required],
+    prompt: ['', Validators.required],
     selectedOption: ['', Validators.required],
   });
 
   handleSumit() {
     if (this.form.invalid) return;
 
-    const { promt, selectedOption } = this.form.value;
+    const { prompt, selectedOption } = this.form.value;
 
     // Emit the message
-    this.onMessage.emit({ promt: promt!, selectedOption: selectedOption! });
+    this.onMessage.emit({ prompt, selectedOption });
 
     // Reset the form
     this.form.reset();

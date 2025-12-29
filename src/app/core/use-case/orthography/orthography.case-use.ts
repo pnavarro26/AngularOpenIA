@@ -1,7 +1,7 @@
 import { OrtographyResponse } from '@interfaces/otthography.response';
 import { environment } from '../../../../environments/environment';
 
-export const orthographyUseCase = async (promt: string) => {
+export const orthographyUseCase = async (prompt: string) => {
   try {
     const response = await fetch(
       `${environment.backendApiUrl}/otthography-check`,
@@ -10,7 +10,7 @@ export const orthographyUseCase = async (promt: string) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ promt }),
+        body: JSON.stringify({ prompt }),
       }
     );
 

@@ -22,15 +22,15 @@ export default class ProsConsPage {
   public openAiService = inject(OpenAI);
 
   // Maneja el envío de un nuevo mensaje //
-  handleMessage(promt: string) {
+  handleMessage(prompt: string) {
     this.isLoading.set(true);
 
     this.messages.update((prevmessages) => [
       ...prevmessages,
-      { isGpt: false, text: promt },
+      { isGpt: false, text: prompt },
     ]);
 
-    this.openAiService.prosCons(promt).subscribe((response) => {
+    this.openAiService.prosCons(prompt).subscribe((response) => {
       // ocultar loader
       this.isLoading.set(false);
       console.log({ response });

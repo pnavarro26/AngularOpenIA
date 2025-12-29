@@ -31,15 +31,7 @@ export class ChatTemplate {
 
   public openAiService = inject(OpenAI);
 
-  handleMessage(promt: string) {
-    console.log({ promt });
+  handleMessage(prompt: string) {
+    console.log({ prompt });
   }
-
-  // handleMessageWithFile(promt: TextMessageBoxFileForm) {
-  //   console.log({ promt });
-  // }
-
-  // handleMessageSelect(promt: any) {
-  //   console.log({ promt });
-  // }
 }

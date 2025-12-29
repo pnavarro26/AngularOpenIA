@@ -16,16 +16,16 @@ export class TextMessageBox {
   public fb = inject(FormBuilder);
 
   public form = this.fb.group({
-    promt: ['', Validators.required],
+    prompt: ['', Validators.required],
   });
 
   handleSumit() {
     if (this.form.invalid) return;
 
-    const { promt } = this.form.value;
+    const { prompt } = this.form.value;
 
     // Emit the message
-    this.onMessage.emit(promt ?? '');
+    this.onMessage.emit(prompt ?? '');
 
     // Reset the form
     this.form.reset();

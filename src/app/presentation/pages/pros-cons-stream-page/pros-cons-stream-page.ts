@@ -24,7 +24,7 @@ export default class ProsConsStreamPage {
   public openAiService = inject(OpenAI);
 
   // manejar el envio de mensajes
-  async handleMessage(promt: string) {
+  async handleMessage(prompt: string) {
     // cancelar cualquier solicitud en curso
     this.abortSignal().abort();
     // crear una nueva señal de aborto
@@ -32,13 +32,13 @@ export default class ProsConsStreamPage {
 
     this.messages.update((msgs) => [
       ...msgs,
-      { isGpt: false, text: promt } as Message,
+      { isGpt: false, text: prompt } as Message,
       { isGpt: true, text: '...' } as Message,
     ]);
 
     this.isLoading.set(true);
     const stream = this.openAiService.prosConsStream(
-      promt,
+      prompt,
       this.abortSignal().signal
     );
     this.isLoading.set(false);

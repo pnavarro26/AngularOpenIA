@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 
 export interface TextMessageBoxFileForm {
-  promt: string;
+  prompt: string;
   file: File | null;
 }
 
@@ -26,7 +26,7 @@ export class TextMessageBoxFile {
   public fb = inject(FormBuilder);
 
   public form = this.fb.group({
-    promt: [''],
+    prompt: [''],
     file: [null, Validators.required],
   });
 
@@ -42,12 +42,12 @@ export class TextMessageBoxFile {
   handleSumit() {
     if (this.form.invalid) return;
 
-    const { promt, file } = this.form.value;
+    const { prompt, file } = this.form.value;
     const message: TextMessageBoxFileForm = {
-      promt: promt ?? '',
+      prompt: prompt ?? '',
       file: file ?? null,
     };
-    console.log({ promt });
+    console.log({ prompt });
 
     // Emit the message
     this.onMessage.emit(message);
