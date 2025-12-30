@@ -12,4 +12,5 @@ export interface Message {
     errors: Error[];
     message: string;
   };
+  audioURL?: string;
 }

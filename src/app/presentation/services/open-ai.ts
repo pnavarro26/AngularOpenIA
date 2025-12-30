@@ -4,8 +4,10 @@ import {
   orthographyUseCase,
   prosConsStreamUseCase,
   prosConsUseCase,
+  TextToAudioUseCase,
 } from 'app/core/use-case';
 import { TranslateTextUseCase } from 'app/core/use-case/translate/translate-text-use-case';
+import { AudioToTextUseCase } from 'app/core/use-case/audios/audio-to-text.use-case';
 
 @Injectable({
   providedIn: 'root',
@@ -32,5 +34,15 @@ export class OpenAI {
   // Metodo para traducir texto a otro idioma //
   translate(prompt: string, lang: string) {
     return from(TranslateTextUseCase(prompt, lang));
+  }
+
+  // Metodo para convertor text en audio //
+  textToAudio(prompt: string, voice: string) {
+    return from(TextToAudioUseCase(prompt, voice));
+  }
+
+  // Metodo para convertor text en audio //
+  audioToText(file: File, prompt?: string) {
+    return from(AudioToTextUseCase(file, prompt));
   }
 }
