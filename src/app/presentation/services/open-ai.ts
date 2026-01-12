@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { from } from 'rxjs';
 import {
+  createThreadUseCase,
   orthographyUseCase,
   prosConsStreamUseCase,
   prosConsUseCase,
@@ -44,5 +45,10 @@ export class OpenAI {
   // Metodo para convertor text en audio //
   audioToText(file: File, prompt?: string) {
     return from(AudioToTextUseCase(file, prompt));
+  }
+
+  // Metodo para conversacion de varios turnos //
+  chatStream(chatId: string, prompt: string) {
+    return from(createThreadUseCase(chatId, prompt));
   }
 }
